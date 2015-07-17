@@ -8,10 +8,10 @@ This agent can be used in gateways or devices to send batched messages to Azure 
 The agent depends on two external libraries: qpid-proton and jansson. Apache Qpid Proton is a high-performance and lightweight messaging library based on AMQP protocol. Please refer to http://qpid.apache.org/releases/qpid-proton-0.9.1/ for more information. Jansson a C library for working with json data. You can refer to https://jansson.readthedocs.org/en/2.7/ for more information.
 
 The agent includes following files:
-- sender-async-batch.c
-- tracker-array.c
-- tracker-array.h
-- gateway.conf
+* sender-async-batch.c
+* tracker-array.c
+* tracker-array.h
+* gateway.conf
 
 The agent has been tested on Ubuntu 14.04 LTS.
 
@@ -20,20 +20,20 @@ The agent has been tested on Ubuntu 14.04 LTS.
 
 Before downloading and compiling the source files, you need to install qpid-proton and jansson libraries. In addition, qpid-proton also depends on some third party libraries like openssl. So, you have to install the underlying libraries first. Below are the basic steps to follow: <br>
 
-1. Install underlying dependent libraries:
+Step 1. Install underlying dependent libraries:
 
 ```Bash
     sudo apt-get install build-essential cmake uuid-dev openssl libssl-dev
 ```
 
-2. Browse to http://qpid.apache.org/releases/qpid-proton-0.9.1/ and copy the appropriate mirror site URL. Download the library and extract it, e.g., 
+Step 2. Browse to http://qpid.apache.org/releases/qpid-proton-0.9.1/ and copy the appropriate mirror site URL. Download the library and extract it, e.g., 
 
 ```Bash
     wget http://mirror.bit.edu.cn/apache/qpid/proton/0.9.1/qpid-proton-0.9.1.tar.gz
     tar xvfz qpid-proton-0.9.1.tar.gz
 ```
 
-3. Build qpid-proton library: 
+Step 3. Build qpid-proton library: 
 
 ```Bash
     cd qpid-proton-0.9.1-rc1
@@ -43,14 +43,14 @@ Before downloading and compiling the source files, you need to install qpid-prot
     make install
 ```
 
-4. Browse to http://www.digip.org/jansson and copy the link URL for Jansson v2.7. Download the library and extract it:
+Step 4. Browse to http://www.digip.org/jansson and copy the link URL for Jansson v2.7. Download the library and extract it:
 
 ```Bash
     wget http://www.digip.org/jansson/releases/jansson-2.7.tar.gz
     tar xvfz jansson-2.7.tar.gz
 ```
 
-5. Build Jansson library:
+Step 5. Build Jansson library:
 
 ```Bash
     cd jansson-2.7
@@ -61,9 +61,9 @@ Before downloading and compiling the source files, you need to install qpid-prot
     make install
 ```
 
-6. Copy agent files, i.e., sender-async-batch.c, tracker-array.c, tracker-array.h and gateway.conf, to current directory.
+Step 6. Copy agent files, i.e., sender-async-batch.c, tracker-array.c, tracker-array.h and gateway.conf, to current directory.
 
-7. Compile agent and run it:
+Step 7. Compile agent and run it:
 
 ```Bash
     gcc sender-async-batch.c tracker-array.c -o sender-async-batch -lqpid-proton -ljansson
